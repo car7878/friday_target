@@ -8,7 +8,6 @@ pids = [7978334,8002380,8004948,7968158,8004958,7822745,7765297,7716167,7991913,
 y = 0
 disc = 0.0
 url = 'https://aiapi.shopping.friday.tw/api/getqpage/'
-headers2 = {'Accept': 'application/json','Accept-Encoding': 'gzip, deflate, br','Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,ko;q=0.6,zh-CN;q=0.5','Connection': 'keep-alive','Content-Length': '162','Content-Type': 'application/json','Host': 'aiapi.shopping.friday.tw','Origin': 'https://turn.shopping.friday.tw','Referer': 'https://turn.shopping.friday.tw/','sec-ch-ua': '"Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','Sec-Fetch-Dest': 'empty','Sec-Fetch-Mode': 'cors','Sec-Fetch-Site': 'same-site','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36','X-Requested-With': 'GA1.1.1453623390.1674006097'}
 def lineNotifyMessage(token, msg):
 
     headers = {
@@ -39,7 +38,9 @@ if __name__ == "__main__":
             target_value_request_url = "https://raw.githubusercontent.com/car7878/friday_target/main/target_value_" + target_value
             print(target_value_request_url)
             resp = requests.get(target_value_request_url)
+            headers2 = {'Accept': 'application/json','Accept-Encoding': 'gzip, deflate, br','Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,ko;q=0.6,zh-CN;q=0.5','Connection': 'keep-alive','Content-Length': '162','Content-Type': 'application/json','Host': 'aiapi.shopping.friday.tw','Origin': 'https://turn.shopping.friday.tw','Referer': 'https://turn.shopping.friday.tw/','sec-ch-ua': '"Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','Sec-Fetch-Dest': 'empty','Sec-Fetch-Mode': 'cors','Sec-Fetch-Site': 'same-site','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36','X-Requested-With': 'GA1.2.' + resp.text.replace("\n","")}
             payload2 = {"target":"pseudoid","list_fun":"Q3sTT","list_args":"content","list_remote":"lots_m","list_cmpn":"friday00","list_click":0,"target_value":resp.text.replace("\n","")}
+            print(headers2)
             print(payload2)
             r = requests.post(url,headers=headers2,data = json.dumps(payload2),timeout=5)
 #            print(r.status_code)
